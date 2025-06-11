@@ -1,0 +1,523 @@
+/* ==========================================================
+  Base Styles
+========================================================== */
+:root {
+  --font-sans: 'Inter', 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --color-bg: #f7f9fa;
+  --color-bg-alt: #eef2f5;
+  --color-header: #fff;
+  --color-footer: #f0f3f7;
+  --color-primary: #2a3546;
+  --color-accent: #1e90ff;
+  --color-border: #e2e8f0;
+  --color-shadow: rgba(60, 72, 95, 0.06);
+  --color-focus: #2563eb;
+  --radius: 1rem;
+  --shadow: 0 4px 16px var(--color-shadow);
+  --transition: 0.2s cubic-bezier(.4,0,.2,1);
+  --max-width: 800px;
+  --nav-height: 64px;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-primary);
+  margin: 0;
+  min-height: 100vh;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin: 0 0 0.75em 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 1.5em 0; }
+a { color: var(--color-accent); text-decoration: none; transition: color var(--transition); }
+a:focus { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+
+/* Section Layout */
+main > section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem 1.25rem 3rem 1.25rem;
+}
+
+@media (max-width: 700px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  main > section { padding: 3.5rem 1rem 2rem 1rem; }
+}
+
+/* ==========================================================
+  Header & Navigation
+========================================================== */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  background: var(--color-header);
+  box-shadow: 0 2px 12px var(--color-shadow);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.site-branding .logo {
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+}
+
+nav {
+  position: relative;
+  height: var(--nav-height);
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  height: 100%;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 0.375rem;
+  transition: background var(--transition), color var(--transition);
+}
+
+nav a:hover,
+nav a:focus {
+  background: var(--color-bg-alt);
+  color: var(--color-accent);
+  outline: none;
+}
+
+/* Hamburger Menu */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  height: var(--nav-height);
+  align-items: center;
+  cursor: pointer;
+  padding: 0 0.5em;
+}
+
+.nav-toggle-label span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 6px 0;
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+
+@media (max-width: 800px) {
+  nav ul {
+    position: fixed;
+    right: 0;
+    top: var(--nav-height);
+    background: var(--color-header);
+    flex-direction: column;
+    gap: 0;
+    width: 220px;
+    padding: 2rem 0;
+    box-shadow: -2px 0 12px var(--color-shadow);
+    height: calc(100vh - var(--nav-height));
+    transform: translateX(100%);
+    transition: transform var(--transition);
+    z-index: 99;
+  }
+  .nav-toggle:checked ~ nav ul {
+    transform: translateX(0);
+  }
+  .nav-toggle-label {
+    display: flex;
+  }
+  nav ul li {
+    width: 100%;
+    text-align: left;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 1em 2em;
+    font-size: 1.1rem;
+    border-radius: 0;
+  }
+  /* Hamburger transforms */
+  .nav-toggle:checked + .nav-toggle-label span {
+    background: var(--color-accent);
+  }
+}
+
+/* Add hamburger toggle in markup if using this CSS:
+<input type="checkbox" id="nav-toggle" class="nav-toggle" />
+<label for="nav-toggle" class="nav-toggle-label" aria-label="Open navigation">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+*/
+
+/* ==========================================================
+  Home & About Sections
+========================================================== */
+#home,
+#about {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+#home h1 {
+  margin-bottom: 0.7em;
+}
+
+#about p {
+  max-width: 540px;
+  margin: 0 auto 1.5em auto;
+}
+
+/* ==========================================================
+  Portfolio Grid
+========================================================== */
+#portfolio {
+  margin-bottom: 2.5rem;
+}
+
+#portfolio .project-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 1100px) {
+  #portfolio .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  #portfolio .project-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.project-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem 1.25rem 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(60, 72, 95, 0.14);
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.6rem;
+  margin-bottom: 1rem;
+  background: var(--color-bg-alt);
+}
+
+.project-card h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.project-card p {
+  flex-grow: 1;
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.project-link,
+.project-card a {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5em 1.3em;
+  border-radius: 2em;
+  box-shadow: 0 1px 4px var(--color-shadow);
+  font-size: 1rem;
+  transition: background var(--transition), box-shadow var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.project-link:hover,
+.project-link:focus {
+  background: #155bcc;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  outline: none;
+}
+
+/* ==========================================================
+  Contact Form
+========================================================== */
+#contact form {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 480px;
+  margin: 2rem auto 0 auto;
+  padding: 2rem 2rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+#contact form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#contact label {
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  color: var(--color-primary);
+}
+
+#contact input,
+#contact textarea {
+  font-family: inherit;
+  width: 100%;
+  padding: 0.6em 0.9em;
+  font-size: 1rem;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5em;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+  min-height: 2.5em;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 2px var(--color-focus);
+  outline: none;
+}
+
+#contact button[type="submit"] {
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 0.7em 2em;
+  border-radius: 2em;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 0.7em;
+  box-shadow: 0 1px 6px var(--color-shadow);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+#contact button[type="submit"]:hover,
+#contact button[type="submit"]:focus {
+  background: #155bcc;
+  outline: none;
+  box-shadow: 0 3px 10px var(--color-shadow);
+}
+
+/* Responsive form */
+@media (max-width: 600px) {
+  #contact form {
+    padding: 1.1rem 0.5rem;
+    width: 100%;
+  }
+}
+
+/* ==========================================================
+  Footer
+========================================================== */
+footer {
+  background: var(--color-footer);
+  border-top: 1px solid var(--color-border);
+  margin-top: 3rem;
+  padding: 2.5rem 1rem 1.5rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+footer ul.social-links {
+  list-style: none;
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+  padding: 0;
+  margin: 0.4rem 0 0 0;
+}
+
+footer ul.social-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: var(--color-accent);
+  border-radius: 50%;
+  width: 2.3rem;
+  height: 2.3rem;
+  font-size: 1.3rem;
+  border: 1.5px solid var(--color-border);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  transition: background var(--transition), color var(--transition),
+    box-shadow var(--transition), border-color var(--transition);
+}
+
+footer ul.social-links li a:hover,
+footer ul.social-links li a:focus {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+
+/* ==========================================================
+  Accessibility & Utility Classes
+========================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-focus);
+}
+
+@media (max-width: 400px) {
+  body, main > section {
+    font-size: 0.97rem;
+    padding: 2.5rem 0.25rem 1.5rem 0.25rem;
+  }
+}
+
+// ===============================
+// Back to Top Button Script
+// ===============================
+
+(function () {
+  // --- Settings ---
+  const SCROLL_TRIGGER = 200; // px from top before button appears
+  const BUTTON_ID = "backToTop";
+  const VISIBLE_CLASS = "back-to-top--visible";
+  const ARIA_LABEL = "Back to top";
+
+  // --- Create and inject the button if it doesn't exist ---
+  function createBackToTopButton() {
+    if (document.getElementById(BUTTON_ID)) return;
+
+    const btn = document.createElement("button");
+    btn.id = BUTTON_ID;
+    btn.type = "button";
+    btn.setAttribute("aria-label", ARIA_LABEL);
+    btn.tabIndex = 0; // ensure keyboard focus
+    btn.innerHTML = "↑"; // You may replace with an SVG or other icon
+
+    // Minimal inline styles for positioning (actual appearance in CSS)
+    btn.style.position = "fixed";
+    btn.style.right = "1.5rem";
+    btn.style.bottom = "1.5rem";
+    btn.style.zIndex = "1000";
+    btn.classList.add("back-to-top-btn");
+
+    document.body.appendChild(btn);
+    return btn;
+  }
+
+  // --- Show/hide button by adding/removing visible class ---
+  function toggleButtonVisibility(btn) {
+    if (window.scrollY > SCROLL_TRIGGER) {
+      btn.classList.add(VISIBLE_CLASS);
+    } else {
+      btn.classList.remove(VISIBLE_CLASS);
+    }
+  }
+
+  // --- Scroll to top smoothly on button click ---
+  function scrollToTop(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // --- Initialize functionality when DOM is ready ---
+  function initBackToTop() {
+    const btn = createBackToTopButton();
+    if (!btn) return;
+
+    // Scroll event: toggle button visibility
+    window.addEventListener("scroll", () => toggleButtonVisibility(btn));
+
+    // Click event: scroll to top
+    btn.addEventListener("click", scrollToTop);
+
+    // Also allow "Enter" and "Space" for keyboard users
+    btn.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        scrollToTop(e);
+      }
+    });
+  }
+
+  // --- Run init when DOM is ready ---
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initBackToTop);
+  } else {
+    initBackToTop();
+  }
+})();

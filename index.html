@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ==================== Head ==================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[Your Name] | Portfolio</title>
+    <meta name="description" content="Short description of your portfolio website.">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Additional <link> or <script> tags can be inserted here -->
+  </head>
+
+  <body>
+    <!-- ==================== Header & Navigation ==================== -->
+    <header>
+      <div class="site-branding">
+        <!-- Replace with logo or text branding -->
+        <a href="#home" class="logo">[Your Name]</a>
+      </div>
+
+      <!--
+        If you are using the CSS hamburger menu, insert this toggle here:
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Open navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      -->
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ==================== Main Content ==================== -->
+    <main>
+      <!-- ---------- Home Section ---------- -->
+      <section id="home" aria-label="Home">
+        <h1>Hello, I'm [Your Name]</h1>
+        <p>Welcome to my personal portfolio website.</p>
+      </section>
+
+      <!-- ---------- About Section ---------- -->
+      <section id="about" aria-label="About">
+        <h2>About Me</h2>
+        <p><!-- Write a brief bio or introduction here. --></p>
+      </section>
+
+      <!-- ---------- Portfolio Section ---------- -->
+      <section id="portfolio" aria-label="Portfolio">
+        <h2>My Work</h2>
+
+        <!-- Project grid: populate with project cards -->
+        <div class="project-grid">
+          <!--
+          <article class="project-card">
+            <img src="path/to/image.jpg" alt="Project thumbnail">
+            <h3>Project Title</h3>
+            <p>Short project summary describing goals & technologies.</p>
+            <a href="#" class="project-link">View project</a>
+          </article>
+          -->
+        </div>
+      </section>
+
+      <!-- ---------- Contact Section ---------- -->
+      <section id="contact" aria-label="Contact">
+        <h2>Contact Me</h2>
+        <form action="#" method="post">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- ==================== Footer ==================== -->
+    <footer>
+      <p>©—[Year] [Your Name]. All rights reserved.</p>
+      <ul class="social-links">
+        <!--
+        <li><a href="#" aria-label="Twitter"></a></li>
+        <li><a href="#" aria-label="LinkedIn"></a></li>
+        <li><a href="#" aria-label="GitHub"></a></li>
+        -->
+      </ul>
+    </footer>
+
+    <!-- Link the Back to Top script -->
+    <script src="script.js"></script>
+  </body>
+</html>
